@@ -1,5 +1,15 @@
 # Changelog
 
+## KDE Modern Classic – unreleased
+
+### New icons
+
+- **Okteta** (hex editor): redrawn from KDE 3's KHexEdit – a clipboard of ruled paper with a chrome H and the
+  orange pencil.
+- **KAlgebra**: redrawn from KDE 3's KMathTool – the green chalkboard in its wooden frame with x² + y chalked on it
+  and a spanner.
+- **Kamoso** (webcam) now uses the theme's camera, like the other webcam icons.
+
 ## KDE Modern Classic – 2026-10-27
 
 ### New icons

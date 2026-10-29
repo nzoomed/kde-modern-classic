@@ -205,6 +205,8 @@ A2 = {"apps": {"org.kde.isoimagewriter": iso_writer, "kwatchgnupg": gnupg_log, "
 for _app, (_doc, _tool) in LO_APPS.items():
     A2["apps"]["libreoffice-" + _app] = libreoffice(_doc, _tool)
 A2["apps"].update(COMMUNITY)
+from classicapps import CLASSIC_APPS, CLASSIC_ALIASES
+A2["apps"].update(CLASSIC_APPS)
 
 LO = {app: "apps/libreoffice-" + app for app in LO_APPS}
 LO["startcenter"] = LO["main"] = "apps/libreoffice-startcenter"
@@ -216,6 +218,7 @@ A2_ALIASES = {"isoimagewriter": "apps/org.kde.isoimagewriter", "org.kde.kwatchgn
               "none": "application-x-zerosize"}
 for a, t in COMMUNITY_ALIASES.items():
     A2_ALIASES[a] = "apps/" + t
+A2_ALIASES.update(CLASSIC_ALIASES)
 for app, target in LO.items():
     for prefix in ("libreoffice-", "libreoffice6.4-", "libreoffice7.0-", "libreoffice24.2-", "libreoffice25.2-"):
         if prefix + app != target.split("/")[1]:
