@@ -1,0 +1,60 @@
+name: Icon request
+description: An app or menu shows an icon from another theme (usually Breeze) instead of KDE Modern Classic
+title: "[Icon request] <App name>"
+labels: ["icon request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening this, please check:
+
+        1. The icon isn't already in the theme (search the repository for the icon name).
+        2. Nobody has requested it already.
+        3. The app isn't a Snap or a Wine/Windows program (those use fixed icon paths that themes can't change).
+
+        **Tip:** `bash ~/.local/share/icons/KDE-Modern-Classic/check-app-icons.sh` lists every app in your menu whose
+        icon comes from another theme, with the exact icon name to put below.
+
+        The theme draws a picture of what a program does in the KDE Classic style. It doesn't copy other projects'
+        logos; if you want an app's real logo, see the add-on kit.
+  - type: input
+    id: app-name
+    attributes:
+      label: Application name
+      description: The name you see in the launcher.
+      placeholder: e.g. qBittorrent
+    validations:
+      required: true
+  - type: input
+    id: icon-name
+    attributes:
+      label: Icon name
+      description: The `Icon=` value from the app's .desktop file, or the name check-app-icons.sh printed.
+      placeholder: e.g. org.qbittorrent.qBittorrent
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does the icon appear?
+      options:
+        - App menu / launcher / taskbar (the app's own icon)
+        - Inside the app (toolbar, menu, sidebar)
+        - System tray / panel
+        - System Settings
+        - Files and folders (Dolphin, file dialogs)
+        - Somewhere else (describe below)
+    validations:
+      required: true
+  - type: textarea
+    id: desc
+    attributes:
+      label: What does it do?
+      description: A line or two on what the app or button does, so the picture can show it.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Optional, but helps a lot for icons inside apps.

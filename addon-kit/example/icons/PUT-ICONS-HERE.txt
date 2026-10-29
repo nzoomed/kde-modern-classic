@@ -1,0 +1,1 @@
+Put your icon files here, named after the icon they replace (firefox.svg ...).

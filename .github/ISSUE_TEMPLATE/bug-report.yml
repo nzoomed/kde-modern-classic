@@ -1,0 +1,36 @@
+name: Icon problem
+description: An icon looks wrong, is hard to see, or shows the wrong picture
+title: "[Bug] <icon or app>"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong?
+      description: What you see, and what you expected. Include the icon name if you know it.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+    validations:
+      required: true
+  - type: input
+    id: plasma
+    attributes:
+      label: Plasma version
+      placeholder: e.g. 6.5.2 (System Settings > About this System)
+  - type: dropdown
+    id: scheme
+    attributes:
+      label: Colour scheme
+      options:
+        - Light (e.g. Breeze Light)
+        - Dark (e.g. Breeze Dark)
+        - Other
+  - type: input
+    id: theme-version
+    attributes:
+      label: Theme version
+      placeholder: e.g. 20261027 (the date in the download's file name)

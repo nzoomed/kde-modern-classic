@@ -1,0 +1,7 @@
+build/
+__pycache__/
+*.pyc
+/KDE-Modern-Classic-*.tar.gz
+addon-kit/*/KDE-Modern-Classic-*/
+addon-kit/*/*.tar.gz
+tools/xbrz/
