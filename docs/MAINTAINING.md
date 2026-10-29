@@ -19,7 +19,8 @@
 - Community app icons: `apps2.py` (`COMMUNITY`, `COMMUNITY_ALIASES`): ktorrent, kid3, qdbusviewer,
   utilities-terminal_su, mpv. Firefox's generic browser picture (`web_browser_window`) is only for the add-on.
 - KDE apps redrawn from KDE Classic originals: `classicapps.py` (`CLASSIC_APPS`, `CLASSIC_ALIASES`), added by
-  `apps2`. Okteta (from KHexEdit), KAlgebra (from KMathTool); Kamoso links to the camera.
+  `apps2`. Okteta (from KHexEdit), KAlgebra (from KMathTool), Kalzium, KHangMan, KBruch, KmPlot, Kig; Kamoso links
+  to the camera. KTouch is in progress in `src/alt/ktouch_draft.py`.
 - Supplied SVGs: `apps2.py` `SUPPLIED` (Gwenview). The drawn eye `gwenview()` is kept on record.
 - qBittorrent's own icon names: `qbittorrent.py` (`QB` drawings, `QB_ALIASES` links). It runs after `apps2` and only
   adds names.

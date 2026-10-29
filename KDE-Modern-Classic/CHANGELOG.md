@@ -9,6 +9,12 @@
 - **KAlgebra**: redrawn from KDE 3's KMathTool – the green chalkboard in its wooden frame with x² + y chalked on it
   and a spanner.
 - **Kamoso** (webcam) now uses the theme's camera, like the other webcam icons.
+- **KDE Edu apps**, each redrawn from its KDE 3 original:
+  - Kalzium: a molecule of black, blue and red atoms on grey bonds.
+  - KHangMan: the rope noose with its coiled knot.
+  - KBruch: 2/7 + 5/3, each figure in its own bright colour.
+  - KmPlot: a red curve on a yellow plotting sheet with ticked axes.
+  - Kig: a geometry sheet with a circle and triangle, the red-to-yellow set square and the orange pencil.
 
 ## KDE Modern Classic – 2026-10-27
 

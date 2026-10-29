@@ -10,3 +10,6 @@ Not built into the theme. Swap one back in by pointing the theme's drawing at th
 The dark glyphs nearly vanished on dark colour schemes (Breeze Dark menus and settings pages). If users prefer
 them, a light-grey glyph with a dark outline was also mocked up as a middle ground.
 | `document-share-nodes.svg` | document-share (the Share menu/button) | `apps2.share_nodes` | Not used yet: option B, kept in case the page-with-nodes Share icon (`apps2.share_document`, 2026-10-27) doesn't read well |
+
+- `ktouch_draft.py`: KTouch, still in progress (2026-10-30). The silver keyboard is done; the hand needs another
+  pass against the KDE 3 original (`ktouch.png`, 32 px).
