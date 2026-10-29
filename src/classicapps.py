@@ -21,12 +21,12 @@ def okteta(ic, hs=.76, depth=1.3):
     ic.add('<path d="M23,7H31" stroke="#5a5e98" stroke-width="1.6" stroke-linecap="round"/>')
     # chrome block H, leaning at the pencil's angle, with a shallow edge for depth
     H = "M0,0H6V8H14V0H20V22H14V13H6V22H0Z"
-    ic.add(f'<g transform="translate(22,36) rotate(-53) scale({hs}) translate(-10,-11)">')
+    ic.add(f'<g transform="translate(19,32) rotate(-43) scale({hs}) translate(-10,-11)">')
     ic.add(f'<path d="{H}" fill="#3c4148" stroke="{INK}" stroke-width="1.1" stroke-linejoin="round" '
            f'transform="translate({depth},{depth})"/>')
     ic.path(H, ic.lg([(0, "#ffffff"), (.45, "#c3c7cd"), (.55, "#7b818a"), (1, "#e4e6e9")], 0, 0, .3, 1), INK, 1.3 / hs)
     ic.add("</g>")
-    _pencil(ic, "translate(57,19) rotate(37) scale(.85) translate(-6,0)")
+    _pencil(ic, "translate(59,21) rotate(47) scale(.85) translate(-6,0)")
 
 
 def _board(ic):
