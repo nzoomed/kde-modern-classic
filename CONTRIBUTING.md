@@ -1,52 +1,88 @@
-# Contributing
+# KDE Modern Classic
 
-Thanks for helping. The easiest ways in are reporting a missing icon and saying when an icon looks wrong.
+A modern take on the KDE 2/3 "KDE Classic" icons: a complete SVG icon theme for KDE Plasma 6.
 
-## Request an icon
+![A selection of KDE Modern Classic icons: folders, file types, apps, settings, toolbar actions and tray icons](docs/images/preview.png)
 
-1. Find the icon name the app asks for. For an app's own icon it's the `Icon=` line of its `.desktop` file
-   (`/usr/share/applications/…` or `~/.local/share/applications/…`). For icons inside an app, run
-   `check-app-icons.sh` or ask in the issue and we'll look it up in the app's source.
-2. [Open an icon request](../../issues/new?template=icon-request.yml) with the app's name, that icon name and a
-   line on what the app does.
+The classic designs are redrawn as clean vectors, some are reworked for today's desktop, and everything KDE 3 never
+had (weather, modern tray states, Wayland and other newer settings) is drawn new in the same style: glossy colours,
+top-left lighting, dark outlines and KDE 3's teal arrows.
 
-We draw a picture of what the program does in the KDE Classic style. We don't copy or trace other projects' logos;
-if you want an app's real logo, the [add-on kit](addon-kit/README.md) can put it in a small add-on theme for you.
+- **3,182 icon names** from **1,237 drawings**, plus 536 versions tuned for 16 and 22 px
+- Covers Plasma's desktop, panel and system tray, Dolphin, System Settings, Discover and the main KDE apps, so none
+  of them fall back to Breeze
+- Crisp at every size, and readable on light and dark colour schemes
 
-## Report a problem
+## Install
 
-[Open a bug report](../../issues/new?template=bug-report.yml) with a screenshot, the icon name if you know it, your
-Plasma version and your colour scheme (light or dark matters for some icons).
+**From the KDE Store:** System Settings > Colours & Themes > Icons > Get New…, search for "KDE Modern Classic".
 
-## Change or add an icon
+**From a release download:** System Settings > Colours & Themes > Icons > Install from File, and pick the
+`KDE-Modern-Classic-*.tar.gz`.
 
-Icons are Python functions in `src/` that draw on a 64×64 canvas with a few helpers from `src/gen.py`:
+**From this repository:**
 
-    def my_icon(ic):
-        """What the icon shows, in one line."""
-        ic.shadow(path, 2.4, 2)                     # soft drop shadow to the lower right
-        ic.path(path, ic.lg([(0, "#fff"), (1, "#c3c7cd")]), INK, LW)   # fill + dark outline
-        pim._embed(ic, "folder", "translate(8,8) scale(.75)")          # reuse another icon
+    git clone https://github.com/OWNER/kde-modern-classic.git
+    cd kde-modern-classic
+    make install                 # for your user; or: sudo make install PREFIX=/usr
 
-Each module has a dictionary that maps icon names to drawings, and an `…_ALIASES` dictionary for extra names that
-should show the same picture. Read [docs/STYLE.md](docs/STYLE.md) first: it sets the canvas, lighting, outline and
-colour rules every icon follows.
+then choose "KDE Modern Classic" under System Settings > Colours & Themes > Icons.
 
-Before sending a pull request:
+When updating, remove the old version first (`make uninstall`, or delete `~/.local/share/icons/KDE-Modern-Classic`),
+clear `~/.cache/icon-cache.kcache`, install the new one, then log out and back in.
 
-    make build          # redraw the theme
-    make test           # must pass
-    python3 tools/compare_builds.py <copy of the old KDE-Modern-Classic> KDE-Modern-Classic
+### Optional add-ons
 
-The comparison should list only the icons you meant to change (plus any icon that embeds one of them). Commit the
-`src/` change **and** the rebuilt `KDE-Modern-Classic/` folder together; CI rebuilds from `src/` and fails if they
-don't match.
+Add-ons are tiny themes that change a few icons and use KDE Modern Classic for everything else. Only one icon theme
+can be active, so put all the icons you want to change in one add-on.
 
-### Rules
+- **Generic Browser** (`make addon-generic-browser`): Firefox shows the theme's globe-in-a-window instead of its own
+  logo. The theme itself never replaces Firefox's logo.
+- **Your own:** [`addon-kit/`](addon-kit/README.md) builds an add-on from any icons you supply, for example an
+  app's official logo you have the right to use.
 
-- New names are added, never silently replaced: a module that adds names skips any name the theme already has.
-- No third-party logos in the theme (Firefox, GIMP, VLC …). The theme must never ship `firefox`, `firefox-esr` or
-  `org.mozilla.firefox`, because a theme icon would hide the logo Firefox installs; `make test` enforces this.
-- Old designs that users might want back are kept in `src/alt/` with a note in its README.
-- Finished SVGs supplied as they are go in `src/supplied/` (see its README), not into the theme folder directly.
-- Note user-visible changes in `KDE-Modern-Classic/CHANGELOG.md`.
+## Missing or wrong icon?
+
+Run the included checker to see which apps in your menu still use another theme's icon:
+
+    bash ~/.local/share/icons/KDE-Modern-Classic/check-app-icons.sh
+
+Then [open an icon request](../../issues/new?template=icon-request.yml) with the app's name and the icon name from
+its `.desktop` file. For an icon that looks wrong, use the [bug report](../../issues/new?template=bug-report.yml).
+
+Apps' brand logos (Firefox, GIMP, VLC …) are left as they are on purpose: the theme draws a picture of what a
+program does, never a copy of someone else's logo.
+
+## Building
+
+Each icon is a small Python function that draws an SVG on a 64×64 canvas (`src/`). Building needs only Python 3,
+with no extra packages:
+
+    make build          # redraws KDE-Modern-Classic/ from src/
+    make test           # checks for broken links, SVG problems Qt would show as black squares, and more
+    make check-build    # confirms the committed theme is exactly what src/ draws
+    make dist           # KDE-Modern-Classic-YYYYMMDD.tar.gz for the store
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) to add or change an icon, [docs/STYLE.md](docs/STYLE.md) for the drawing
+rules and [docs/ROADMAP.md](docs/ROADMAP.md) for what's planned.
+
+## How it was made
+
+Every icon in this theme was drawn as SVG by an AI assistant (Claude, by Anthropic), working from the original KDE
+Classic icons under the author's direction. Each icon was reviewed by eye against the originals and revised until
+it was right; many went through several rounds. The theme's design decisions and final say on every icon are the
+author's.
+
+## Licence and credits
+
+KDE Modern Classic is released under the GNU Lesser General Public License, version 3 or (at your option) any later
+version (`LGPL-3.0-or-later`); see [COPYING.LESSER](COPYING.LESSER) and [COPYING](COPYING).
+
+- Author: Shaun Belcher (design direction, review, maintenance). See [AUTHORS](KDE-Modern-Classic/AUTHORS).
+- KDE Classic artwork: the KDE artists of the 2.x/3.x era, maintained by James Richard Tyrer. Free for any use,
+  including copying, modification and redistribution ([LICENSE-KDE-Classic.txt](KDE-Modern-Classic/LICENSE-KDE-Classic.txt)).
+- KDE logo (start-here, kmenu): from KDE_2_logo.svg, covered by the LGPL like KDE's own artwork. KDE, K Desktop
+  Environment and the KDE Logo are trademarks of KDE e.V.
+
+Bundling the theme in a distribution or a Global Theme? See "For distributions and theme bundles" in the
+[theme's README](KDE-Modern-Classic/README.md).
