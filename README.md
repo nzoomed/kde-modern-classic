@@ -50,6 +50,8 @@ Run the included checker to see which apps in your menu still use another theme'
 Then [open an icon request](../../issues/new?template=icon-request.yml) with the app's name and the icon name from
 its `.desktop` file. For an icon that looks wrong, use the [bug report](../../issues/new?template=bug-report.yml).
 
+Would you like to draw some? [docs/WANTED-ICONS.md](docs/WANTED-ICONS.md) lists the app icons still wanted.
+
 ## Building
 
 Each icon is a small Python function that draws an SVG on a 64×64 canvas (`src/`). Building needs only Python 3,

@@ -57,7 +57,10 @@ To preview one icon as SVG:
 
 ## Agreed rules
 
-- Never trace or copy third-party logos. The theme must not ship `firefox`, `firefox-esr` or `org.mozilla.firefox`.
+- App logos may be redrawn in the theme's style where the app's trademark or logo terms allow it (the pull request
+  says which terms were checked); never paste in an app's own icon file. New app icons go in an optional add-on,
+  so the main theme stays as released. The main theme must not ship `firefox`, `firefox-esr` or
+  `org.mozilla.firefox` (`make test` checks this). Rule changed 2026-10-30; before that, app logos were not drawn.
 - When a name's meaning is shared (e.g. `window-close` for both menus and notification popups), the theme can only
   draw one picture; ask KDE for a separate name instead (`docs/KDE-icon-name-requests.md`).
 - Modules that add names only add; anything already in the theme is skipped and reported.

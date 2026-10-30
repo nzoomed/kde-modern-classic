@@ -10,8 +10,7 @@ Thanks for helping. The easiest ways in are reporting a missing icon and saying 
 2. [Open an icon request](../../issues/new?template=icon-request.yml) with the app's name, that icon name and a
    line on what the app does.
 
-We draw a picture of what the program does in the KDE Classic style. We don't copy or trace other projects' logos;
-if you want an app's real logo, the [add-on kit](addon-kit/README.md) can put it in a small add-on theme for you.
+Want to draw one yourself? [docs/WANTED-ICONS.md](docs/WANTED-ICONS.md) lists the app icons still wanted.
 
 ## Report a problem
 
@@ -45,8 +44,10 @@ don't match.
 ### Rules
 
 - New names are added, never silently replaced: a module that adds names skips any name the theme already has.
-- No third-party logos in the theme (Firefox, GIMP, VLC …). The theme must never ship `firefox`, `firefox-esr` or
-  `org.mozilla.firefox`, because a theme icon would hide the logo Firefox installs; `make test` enforces this.
+- An app's logo may be redrawn in the theme's style, if the app's trademark or logo terms allow it; say in the pull
+  request which terms you checked. Never paste in an app's own icon file. The main theme must not ship `firefox`,
+  `firefox-esr` or `org.mozilla.firefox` (`make test` checks this).
+- New app icons will go into an optional add-on theme, not the main theme.
 - Old designs that users might want back are kept in `src/alt/` with a note in its README.
 - Finished SVGs supplied as they are go in `src/supplied/` (see its README), not into the theme folder directly.
 - Note user-visible changes in `KDE-Modern-Classic/CHANGELOG.md`.

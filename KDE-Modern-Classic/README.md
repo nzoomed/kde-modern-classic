@@ -52,7 +52,7 @@ where it comes from instead:
     bash ~/.local/share/icons/KDE-Modern-Classic/check-app-icons.sh
 
 Paste the `breeze` and `hicolor` lines into a comment on the store page; the icon names are exactly what's
-needed to add them. Other apps' brand logos (Firefox, GIMP, VLC ...) are left as they are on purpose.
+needed to add them.
 
 ## How it was made
 

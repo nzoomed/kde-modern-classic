@@ -15,8 +15,8 @@ body:
         **Tip:** `bash ~/.local/share/icons/KDE-Modern-Classic/check-app-icons.sh` lists every app in your menu whose
         icon comes from another theme, with the exact icon name to put below.
 
-        The theme draws a picture of what a program does in the KDE Classic style. It doesn't copy other projects'
-        logos; if you want an app's real logo, see the add-on kit.
+        Icons are drawn in the KDE Classic style. An app's logo redrawn in that style is welcome, where the app's
+        trademark or logo terms allow it. To draw one yourself, see docs/WANTED-ICONS.md.
   - type: input
     id: app-name
     attributes:
