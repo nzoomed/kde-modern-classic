@@ -22,7 +22,7 @@ top-left lighting, dark outlines and KDE 3's teal arrows.
 
 **From this repository:**
 
-    git clone https://github.com/nzoomed/kde-modern-classic.git
+    git clone https://github.com/OWNER/kde-modern-classic.git
     cd kde-modern-classic
     make install                 # for your user; or: sudo make install PREFIX=/usr
 
