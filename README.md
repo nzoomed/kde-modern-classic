@@ -62,15 +62,25 @@ with no extra packages:
     make check-build    # confirms the committed theme is exactly what src/ draws
     make dist           # KDE-Modern-Classic-YYYYMMDD.tar.gz for the store
 
+##Community & Human Contributions Welcome!
+
+This project is open-source and hosted on GitHub. While AI helped build the massive foundation of over 3,182 icons, human refinement is the ultimate goal.
+If you love the classic KDE aesthetic and want to help perfect this theme, contributions are highly encouraged! You can help by:
+• Replacing AI-assisted SVGs with 100% human-drawn, pixel-perfect vectors.
+• Fixing nodes, cleaning up layers, or correcting colors in existing SVGs.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) to add or change an icon, [docs/STYLE.md](docs/STYLE.md) for the drawing
 rules and [docs/ROADMAP.md](docs/ROADMAP.md) for what's planned.
 
 ## How it was made
 
-Every icon in this theme was drawn as SVG by an AI assistant (Claude, by Anthropic), working from the original KDE
-Classic icons under the author's direction. Each icon was reviewed by eye against the originals and revised until
-it was right; many went through several rounds. The theme's design decisions and final say on every icon are the
-author's.
+Every icon in this theme is a meticulously directed, AI-assisted restoration and expansion of the original KDE Classic assets.
+Recreating and expanding a theme for modern High-DPI Plasma 6 screens is a monumental task. To achieve this, an AI model (Claude by Anthropic) was utilized as an advanced, interactive vectorizing and design tool operating under my direct, step-by-step creative direction.
+The Workflow and Human Craftsmanship:
+• Historical Preservation: Legacy low-resolution icons were carefully upscaled and translated into clean, scalable SVG format.
+• Modern Expansion: Because the original classic theme lacks icons for many modern apps and system settings, new icons were custom-designed from scratch. I directed the AI tool to meticulously mimic the exact lighting, gradients, shading, and stylistic language of the original KDE classic era so that modern software fits seamlessly into the retro aesthetic.
+• Rigorous Quality Control: Every asset underwent strict visual comparison against the classic style guide. Most icons required multiple rounds of interactive feedback to correct geometric errors, fix vector nodes, and refine details until they were exactly right.
+Technology was leveraged to make this massive project viable, but human oversight, artistic direction, and a dedication to preserving and evolving desktop history drove every single pixel.
 
 ## Licence and credits
 
