@@ -395,6 +395,26 @@ those drawings are other projects' logos redrawn in Papirus's style, which this 
 - [x] **Process:** issue forms for icon requests and bugs, tests in CI on every push, date-based release tags,
   `make install` / `make dist` (done when the GitHub repository was set up).
 
+### 10. Optional third-party apps pack (idea, 2026-10-30)
+
+A separate add-on for third-party apps (Firefox, GIMP, VLC ...) drawn in the classic style, so users choose whether
+they want them. Firefox's icon would move into it, and the main theme's firefox check (`make test`) stays as it is.
+Undecided: whether it joins a KDE apps add-on in one pack (only one icon theme can be active at a time) or stays
+separate.
+
+### 11. To revisit (2026-10-30)
+
+- [ ] **Perl clam.** KDE 3 drew Perl files as an open golden clam with a pearl (`shellscript2.png`). A traced redraw
+  is in `src/alt/perl_clam_draft.py`; it lines up with the original but doesn't look right yet. Perl keeps the
+  script icon with the blue "pl" label meanwhile.
+- [ ] **KTouch hand.** The silver keyboard is done; the hand still needs work (`src/alt/ktouch_draft.py`).
+- [ ] **Small folder icons: emblem only or folder kept? (feedback wanted).** At 16 and 22 px, Home, Downloads,
+  Documents, Music, Pictures, Videos and Cloud show just their emblem; the other emblem folders keep the folder
+  with a larger emblem. Candidates for emblem only, being kinds of place: Templates, Public share, Network folder
+  (remote), Development, Games, Mail, Print, Recent. Probably keep the folder, since the emblem marks the folder's
+  state: Add, Locked, Important, Sync, Bookmark, Saved search, Stash, Temp. `folder-git` has no small version yet.
+  Small versions are made in `src/odds.py` (`SMALL_EMBLEM_ONLY`, `SMALL_DRAWN`).
+
 ## How to help
 
 - **Find what's missing on your desktop.** Once the missing-icon report script (Next steps, 5) exists, run it and paste the output. Until then, run the coverage report, or open the contact sheets to see

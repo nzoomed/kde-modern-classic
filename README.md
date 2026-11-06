@@ -8,7 +8,7 @@ The classic designs are redrawn as clean vectors, some are reworked for today's 
 had (weather, modern tray states, Wayland and other newer settings) is drawn new in the same style: glossy colours,
 top-left lighting, dark outlines and KDE 3's teal arrows.
 
-- **3,182 icon names** from **1,237 drawings**, plus 536 versions tuned for 16 and 22 px
+- **3,186 icon names** from **1,239 drawings**, plus 536 versions tuned for 16 and 22 px
 - Covers Plasma's desktop, panel and system tray, Dolphin, System Settings, Discover and the main KDE apps, so none
   of them fall back to Breeze
 - Crisp at every size, and readable on light and dark colour schemes

@@ -138,11 +138,47 @@ OD_ALIASES = {
 OD_OVERRIDE = {"arrow-up-symbolic": "status/collapse", "arrow-down-symbolic": "status/expand"}
 
 
-# Small sizes (16 and 22 px): Home and Downloads show just their emblem, filling the icon, as KDE 3's
-# home did at 16 px. Documents, Music, Pictures and Videos keep the folder so they can't be mistaken for files
-# (they also appear in Dolphin's Details view at these sizes).
+# Small sizes (16 and 22 px): Home, Downloads, Documents, Music, Pictures and Videos show just their emblem,
+# filling the icon, as KDE 3's home did at 16 px. (Until 2026-11-05 Documents, Music, Pictures and Videos kept the
+# folder behind a larger emblem; the author asked for emblem only, like Downloads.) Boxes are each emblem's
+# extent on the 64 px canvas, shadow included.
 SMALL_EMBLEM_ONLY = {"user-home": ("home", (2.25, 28.25, 32.25, 59.0)),
-                     "folder-download": ("download", (4.25, 27.25, 33.0, 55.75))}
+                     "folder-download": ("download", (4.25, 27.25, 33.0, 55.75)),
+                     "folder-documents": ("documents", (2.2, 27.2, 34.0, 61.6)),
+                     "folder-music": ("music", (-0.2, 25.4, 30.2, 64.0)),
+                     "folder-pictures": ("pictures", (2.2, 29.2, 35.4, 57.0))}
+
+
+def _small_film(ic):
+    """Videos at 16/22 px: one big golden film frame with sprocket holes along the top and bottom, filling the
+    icon (the large icon's long diagonal strip is too thin at these sizes). Chosen 2026-11-05."""
+    w = h = 30
+    x0, y0 = 32 - w / 2, 32 - h / 2
+    ic.add('<g transform="translate(32,32) scale(1.9) translate(-32,-32)">')
+    d = f"M{x0},{y0}H{x0 + w}V{y0 + h}H{x0}Z"
+    ic.shadow(d, 2.4, 2)
+    ic.path(d, ic.lg([(0, "#4a4f56"), (1, "#101214")], 0, 0, 0, 1), INK, LW)
+    for i in range(4):
+        x = x0 + 2.4 + i * (w - 8) / 3
+        for y in (y0 + 1.8, y0 + h - 4.8):
+            ic.add(f'<rect x="{x:.2f}" y="{y:.2f}" width="3.2" height="3" rx=".6" fill="#f4f4f4"/>')
+    ic.path(f"M{x0 + 4},{y0 + 6.5}H{x0 + 26}V{y0 + h - 6.5}H{x0 + 4}Z",
+            ic.lg([(0, "#ffe9a8"), (.5, "#e8b030"), (1, "#a8700c")], 0, 0, 1, 1), "#000", .9)
+    ic.add("</g>")
+
+
+def _small_cloud(ic):
+    """Cloud folder at 16/22 px: just the folder emblem's cloud, filling the icon (on the folder it was too small to
+    read). 2026-11-06."""
+    from dolphin import e_cloud
+    x0, y0, x1, y1 = -0.2, 29.8, 43.2, 55.8              # the cloud's extent, shadow included
+    k = 59 / (x1 - x0)
+    ic.add(f'<g transform="translate(32,33) scale({k:.4f},{k:.4f}) translate({-(x0 + x1) / 2:.2f},{-(y0 + y1) / 2:.2f})">')
+    e_cloud(ic)
+    ic.add("</g>")
+
+
+SMALL_DRAWN = {"folder-videos": _small_film, "folder-cloud": _small_cloud}
 
 
 def _emblem_only(emblem, box, pad=1.5):
@@ -187,12 +223,14 @@ def write(out):
             old = None
         if old is None:
             os.symlink(f"{name}.svg" if ctx == _find(out, name) else f"../{ctx}/{name}.svg", f"{out}/scalable/{ctx}/{a}.svg")
-    for name, (emblem, box) in SMALL_EMBLEM_ONLY.items():
+    small = {n: (lambda e=e, b=b: _emblem_only(e, b)) for n, (e, b) in SMALL_EMBLEM_ONLY.items()}
+    small.update({n: (lambda f=f: _ic(f)()) for n, f in SMALL_DRAWN.items()})
+    for name, make in small.items():
         for sub, px in (("16x16", 16), ("22x22", 22)):
             p = f"{out}/{sub}/places/{name}.svg"
             if os.path.lexists(p):
                 os.remove(p)
-            open(p, "w").write(_emblem_only(emblem, box).svg(px))
+            open(p, "w").write(make().svg(px))
             for f in os.listdir(f"{out}/scalable/places"):          # names that share it (folder-desktop ...)
                 lp = f"{out}/scalable/places/{f}"
                 q = f"{out}/{sub}/places/{f}"

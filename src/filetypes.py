@@ -20,7 +20,12 @@ def page(ic, x0=None):
     ic.path(FOLD, ic.lg([(0, "#ffffff"), (.6, "#eeeae4"), (1, "#bdb5a8")], 0, 0, 1, 1), INK, 1)
 
 
+_LINE_END = [None]          # set while drawing a perforated page, so text lines stop short of the slots
+
+
 def lines(ic, x0, x1, y0, n, gap=3.2, col=TEXT, w=1.1, pattern=(1, .92, 1, .8, .96, .6), breaks=()):
+    if _LINE_END[0] is not None:
+        x1 = min(x1, _LINE_END[0])
     y, out = y0, []
     for k in range(n):
         if k in breaks:
@@ -75,9 +80,10 @@ def m_binary(ic):
 def m_source(ic):
     """Hollow dots in indented rows: the original's picture of source code."""
     rows = [(0, 1), (0, 1), (1, 2, 3), (0, 1, 3), (0, 1, 2), (0, 2, 3)]
+    step = 8 if _LINE_END[0] is None else 6.6      # closer together on a perforated page, clear of the slots
     for r, row in enumerate(rows):
         for c in row:
-            x, y = 25.6 + c * 8, 9 + r * 7.6
+            x, y = 25.6 + c * step, 9 + r * 7.6
             if y < 16 and x > 40:
                 continue
             ic.path(circle(x, y, 2.3), ic.rg([(0, "#ffffff"), (1, "#e4ddd0")]), TEXT, 1.1)
@@ -162,14 +168,48 @@ def e_gear(ic):
 
 
 def e_question(ic):
-    q = "M14.5,19Q14.5,9.5 24.5,9.5Q34.5,9.5 34.5,18.5Q34.5,25 28,28Q24.5,30 24.5,35V37.5"
-    ic.add(f'<path d="{q}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="8.5" stroke-linecap="round" transform="translate(2,2)"/>')
+    """Unknown file: the green question mark, its left end curling in, with a round dot standing clear below.
+    (Until 2026-11-05: a narrower mark with a diamond dot touching the stem.)"""
+    q = "M15.6,22.4Q12.4,20.4 12.6,16.6Q13.6,9 24.5,9Q36.6,9 36.6,18.4Q36.6,25.4 29.4,28.4Q24.5,30.4 24.5,35.4V36.4"
+    ic.add(f'<path d="{q}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(2,2)"/>')
     ic.add(f'<path d="{q}" fill="none" stroke="{INK}" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>')
     ic.add(f'<path d="{q}" fill="none" stroke="#2f9a2e" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>')
-    ic.add('<path d="M16.6,17.6Q17.4,12 24.4,11.8Q30,11.8 31.6,15.4" fill="none" stroke="#b4f0a0" stroke-width="1.6" stroke-linecap="round"/>')
-    dot = "M24.5,41.5L29,46L24.5,50.5L20,46Z"
-    ic.shadow(dot, 2, 2)
-    ic.path(dot, ic.lg([(0, "#9ee070"), (1, "#1e6a10")], 0, 0, 1, 1), INK, LW)
+    ic.add('<path d="M15.2,16.6Q16.6,11 24.4,10.8Q31.4,10.8 33.8,15" fill="none" stroke="#b4f0a0" stroke-width="1.6" stroke-linecap="round"/>')
+    ic.shadow(circle(24.5, 47.2, 3.55), 2, 2)                 # as wide as the stem's foot, outline included
+    ic.path(circle(24.5, 47.2, 3.55), ic.rg([(0, "#d8ffc0"), (.35, "#5cc040"), (1, "#145a0c")], .35, .3, .8), INK, LW)
+
+
+# KDE 3's unknown file had hieroglyphs carved into the page behind the question mark (2026-11-05, glyph shapes
+# after the usual sign list): two reed leaves, a basket and a standing falcon. Each is taupe with a white edge
+# below and to the right, so it looks cut into the paper.
+def _reed(x, y=14.0):
+    return (f"M{x + 1.5},{y}Q{x + 3.2},{y + 1.2} {x + 3.3},{y + 4}L{x + 3.4},{y + 12.6}H{x + 2.7}V{y + 10.2}"
+            f"L{x + .1},{y + 8.8}L{x + .4},{y + 2.6}Q{x + .6},{y + .8} {x + 1.5},{y}Z")
+
+
+BASKET = "M39.4,31H52Q51.4,36 45.7,36Q40,36 39.4,31Z"
+FALCON = ("M38.90,35.10C39.42,34.85 40.33,35.07 40.80,35.60C41.27,36.13 40.87,37.17 41.70,38.30"
+          "C42.53,39.43 44.52,40.98 45.80,42.40C47.08,43.82 48.32,45.37 49.40,46.80"
+          "C50.48,48.23 52.70,50.40 52.30,51.00C51.90,51.60 48.45,50.78 47.00,50.40"
+          "C45.55,50.02 44.53,49.00 43.60,48.70C42.67,48.40 41.97,48.98 41.40,48.60"
+          "C40.83,48.22 40.53,47.57 40.20,46.40C39.87,45.23 39.67,42.98 39.40,41.60"
+          "C39.13,40.22 38.88,38.85 38.60,38.10C38.32,37.35 37.65,37.60 37.70,37.10"
+          "C37.75,36.60 38.38,35.35 38.90,35.10Z"
+          "M38.4,35.4L36.4,36.2L36.8,37.6L37.6,37L38.6,37.6Z")
+
+
+def e_hieroglyphs(ic):
+    reeds = _reed(44.8, 18.6) + _reed(49.8, 18.6)
+    legs = "M41.2,48.4V52.6M43.2,48.8V52.6M37.6,53H45.4"
+    bird = '<g transform="translate(43.4,44) scale(.88) translate(-45.2,-44)">'      # a little smaller, to the left
+    bowl = '<g transform="translate(49.6,37.8) scale(.74) translate(-45.7,-33.5)">'  # smaller, lower, to the right
+    for dx, col in ((.9, "#fff"), (0, "#a89a86")):
+        t = f' transform="translate({dx},{dx})"' if dx else ""
+        ic.add(f'<g{t}><path d="{reeds}" fill="{col}"/>'
+               f'{bowl}<path d="{BASKET}" fill="none" stroke="{col}" stroke-width="1.3" stroke-linejoin="round"/></g>'
+               f'{bird}<path d="{FALCON}" fill="{col}"/><path d="{legs}" stroke="{col}" stroke-width="1"/></g></g>')
+    ic.add(f'{bird}<circle cx="38.9" cy="36.6" r=".6" fill="#fff"/>'
+           '<path d="M40.4,40.4Q41.2,45.4 46.2,49.2" fill="none" stroke="#fff" stroke-width=".7"/></g>')
 
 
 def box(ic, x=8, y=14, w=18, h=22):
@@ -384,7 +424,7 @@ MIMES = {
     "application-x-executable": exe,
     "text-x-source": mime(m_source),
     "text-x-makefile": mime(e_gear),
-    "unknown": mime(e_question),
+    "unknown": mime(e_hieroglyphs, e_question),
     "package-x-generic": mime(e_box),
     "application-x-compressed-tar": mime(e_box, e_squeeze),
     "text-x-readme": mime(e_info),
@@ -1564,3 +1604,86 @@ _reg("application-x-cd-image", (e_disc,), "iso", "blue", ["application-x-iso9660
 # unknown *binary* files (.bin and anything else the system can't identify but knows is binary) get the
 # 0/1 page; "unknown" (type can't be determined at all) keeps the green question mark
 MIME_ALIASES["application-octet-stream"] = "application-x-object"
+
+
+# ------------------------------------------------------------------ TeX font files (2026-10-30)
+# KDE 3's pk.png / gf.png: the grey cat's face on the page. Packed fonts (.pk) carry the compressed-file corner marks.
+def e_cat(ic, cx=23, cy=36):
+    """A friendly grey cat's face, wide and flat like KDE 3's: ears set out at the sides, white muzzle, blue eyes,
+    pink cheeks, whiskers."""
+    head = (f"M{cx - 19},{cy - 17}L{cx - 8},{cy - 11}Q{cx},{cy - 13} {cx + 8},{cy - 11}L{cx + 19},{cy - 17}"
+            f"L{cx + 17.5},{cy - 3}Q{cx + 21},{cy + 4} {cx + 15},{cy + 9}Q{cx + 8},{cy + 14} {cx},{cy + 14}"
+            f"Q{cx - 8},{cy + 14} {cx - 15},{cy + 9}Q{cx - 21},{cy + 4} {cx - 17.5},{cy - 3}Z")
+    ic.shadow(head, 2.6, 2.2)
+    ic.path(head, ic.rg([(0, "#f4f5f7"), (.55, "#a8adb4"), (1, "#4c5158")], .45, .35, .8), INK, LW)
+    for s in (-1, 1):   # inner ears
+        ic.path(f"M{cx + s * 16.6},{cy - 13.6}L{cx + s * 9.4},{cy - 10}L{cx + s * 15.6},{cy - 5.4}Z", "#e8a8b0", None)
+    ic.add(f'<path d="M{cx - 3.4},{cy - 11.8}L{cx - 2.4},{cy - 6.6}M{cx + 3.4},{cy - 11.8}L{cx + 2.4},{cy - 6.6}M{cx},{cy - 12.2}V{cy - 7.4}" '
+           f'stroke="#5c6168" stroke-width=".9" stroke-linecap="round"/>')
+    muzzle = f"M{cx - 10},{cy + 5.4}Q{cx - 10},{cy} {cx},{cy}Q{cx + 10},{cy} {cx + 10},{cy + 5.4}Q{cx + 9},{cy + 11.6} {cx},{cy + 11.6}Q{cx - 9},{cy + 11.6} {cx - 10},{cy + 5.4}Z"
+    ic.path(muzzle, ic.rg([(0, "#ffffff"), (1, "#d8dce0")]), None)
+    for s in (-1, 1):
+        ex = cx + s * 6.8
+        ic.path(f"M{ex - 3.6},{cy - 3}Q{ex},{cy - 7.2} {ex + 3.6},{cy - 3}Q{ex},{cy + .4} {ex - 3.6},{cy - 3}Z",
+                ic.rg([(0, "#bfe4ff"), (1, "#2a6ac8")]), INK, .9)
+        ic.path(circle(ex + 1.6, cy - 3.2, 1.3), INK, None)          # looking a little to the right
+        ic.path(circle(ex + 1, cy - 4, .6), "#ffffff", None)
+        ic.path(circle(cx + s * 9, cy + 4.6, 2.6), "#f08a9a", None, ' fill-opacity=".6"')
+    ic.path(f"M{cx - 2},{cy + 2.2}H{cx + 2}L{cx},{cy + 4.4}Z", "#d86070", INK, .6)
+    ic.add(f'<path d="M{cx - 4.4},{cy + 7}Q{cx},{cy + 9.8} {cx + 4.4},{cy + 7}" fill="none" stroke="#c82030" stroke-width="1.3" stroke-linecap="round"/>')
+    ic.add(f'<path d="M{cx - 10},{cy + 3.6}H{cx - 21}M{cx - 10},{cy + 5.8}L{cx - 20},{cy + 8.6}M{cx + 10},{cy + 3.6}H{cx + 21}M{cx + 10},{cy + 5.8}L{cx + 20},{cy + 8.6}" '
+           f'stroke="{INK}" stroke-width=".8" stroke-linecap="round"/>')
+
+
+MIMES["application-x-tex-gf"] = mime(e_cat)
+MIMES["application-x-tex-pk"] = mime(e_cat, e_squeeze)
+for _a in ("application-x-font-tex", "application-x-font-tex-tfm"):
+    MIME_ALIASES[_a] = "application-x-tex-gf"
+
+
+# ------------------------------------------------------------------ perforations on text files (2026-11-05)
+# KDE Classic's text-based file types (plain text, source, scripts, HTML, TeX, make, readme, mail ...) have a column
+# of slots punched just inside the page's right edge, like continuous printer paper. Binary, media, archive and
+# office types don't. The slots are cut into the paper and lit from the top left; their darks are see-through so
+# they take the page's gradient, and they fade from the bottom slot (darkest) to the top one, which tucks under
+# the folded corner.
+PERF = {
+    "text-plain", "text-x-generic", "text-x-source", "text-x-readme", "text-x-makefile", "text-x-tex", "text-html",
+    "text-css", "text-markdown", "text-calendar", "text-vtt", "text-x-microdvd", "text-x-ssa",
+    "text-rust", "text-vbscript", "text-x-arduino", "text-x-c++hdr", "text-x-c++src", "text-x-chdr", "text-x-csharp",
+    "text-x-csrc", "text-x-fortran", "text-x-go", "text-x-haskell", "text-x-hex", "text-x-java", "text-x-kotlin",
+    "text-x-lua", "text-x-ms-regedit", "text-x-opml+xml", "text-x-pascal", "text-x-patch", "text-x-php",
+    "text-x-python", "text-x-qml", "text-x-sql", "message-rfc822",
+    "application-xml", "application-json", "application-javascript", "application-x-yaml", "application-toml",
+    "application-atom+xml", "application-rss+xml", "application-geo+json", "application-gpx+xml",
+    "application-vnd.google-earth.kml+xml", "application-x-shellscript", "application-x-csh", "application-x-perl",
+    "application-x-ruby", "application-x-powershell", "application-x-bat", "application-x-subrip", "application-x-sami",
+}
+
+
+def e_perf(ic, x=50.6, y0=12.6, n=6, gap=7.0, fade=.55, w=4.0, h=6.0, rim=.3, dark=.68):
+    out = []
+    for k in range(n):
+        y, f = y0 + k * gap, fade + (1 - fade) * k / (n - 1)
+        out.append(f'<path d="M{x},{y:.1f}h{w}v{h}h-{w}Z" fill="#000" fill-opacity="{rim * f:.3f}"/>'
+                   f'<path d="M{x + 1.2},{y + 1.2:.1f}h{w - 1.2}v{h - 1.2}h-{w - 1.2}Z" fill="#fff"/>'
+                   f'<path d="M{x + 1.2},{y + 1.2:.1f}h{w - 2.6}v{h - 2.6}h-{w - 2.6}Z" fill="#000" fill-opacity="{dark * f:.3f}"/>')
+    return "".join(out)
+
+
+def _perforated(build):
+    def f():
+        _LINE_END[0] = 48.6
+        try:
+            ic = build()
+        finally:
+            _LINE_END[0] = None
+        ic.body = [b for b in ic.body if "M54.5,19V55" not in b]           # the old dashed edge (info, mail)
+        i = next(k for k, b in enumerate(ic.body) if 'd="M44,1V13.2' in b)  # under the folded corner
+        ic.body.insert(i, e_perf(ic))
+        return ic
+    return f
+
+
+for _n in sorted(PERF):
+    MIMES[_n] = _perforated(MIMES[_n])

@@ -1,5 +1,28 @@
 # Changelog
 
+## KDE Modern Classic – 2026-11-06
+
+### New icons
+
+- **TeX font files** (packed `.pk` and generic `.gf` fonts, TeX fonts and font metrics): KDE 3's grey cat's face on
+  the page. Packed fonts carry the same magenta corner marks as compressed files. Before, they used the plain font
+  icon.
+
+### Improvements
+
+- **Unknown files**: the hieroglyphs from the KDE 3 icon are back, carved into the page behind the question mark
+  (two reed leaves, a basket and a standing falcon). The question mark is a little wider with its end curling in,
+  and its dot is now a round green ball standing clear of the stem.
+- **Perforations on text files**, as in KDE Classic: a column of punched slots down the right edge of the page,
+  fading lighter towards the top, on plain text, source code, scripts, HTML, CSS, JSON, XML, YAML, Markdown,
+  TeX, Makefile, README, subtitles, calendars, mail messages and other text-based files (55 types). Text lines and
+  source-code dots on these pages stop short of the slots.
+- **Documents, Music, Pictures and Videos folders** at 16 and 22 px (Dolphin's Places panel, Details view and
+  file dialogs) now show just their emblem, filling the icon, like Home and Downloads. Before, the folder was
+  still drawn behind them. Videos uses a single big film frame at these sizes, since the long film strip
+  was too thin to read. The Cloud folder (also Google Drive, Dropbox, OneDrive, Nextcloud and
+  ownCloud) shows just its cloud at these sizes, since on the folder it was too small to see.
+
 ## KDE Modern Classic – 2026-10-27
 
 ### New icons
