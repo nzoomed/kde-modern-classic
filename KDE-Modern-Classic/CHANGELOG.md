@@ -1,5 +1,12 @@
 # Changelog
 
+## KDE Modern Classic – unreleased
+
+### Fixes
+
+- **Increase and Decrease Font Size** (Konsole, Kate and other editors): the black letters now have a white edge,
+  so they show up on dark colour schemes and black terminal backgrounds.
+
 ## KDE Modern Classic – 2026-11-06
 
 ### New icons

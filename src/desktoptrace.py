@@ -69,9 +69,12 @@ def align_vcenter(ic):
 
 # ------------------------------------------------------------------ text and lists
 def _letter_a(ic, x, y, h, col="#14171c"):
+    """A letter A in black with a white edge, so it shows on dark backgrounds too (white edge added 2026-11-06)."""
     w = h * .8
     d = f"M{x},{y + h}L{x + w / 2},{y}L{x + w},{y + h}M{x + w * .22},{y + h * .62}H{x + w * .78}"
-    ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{h * .17:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
+    sw = h * .17
+    ic.add(f'<path d="{d}" fill="none" stroke="#fff" stroke-width="{sw + 2.6:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
+    ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{sw:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
 
 
 def font_size_more(ic):
