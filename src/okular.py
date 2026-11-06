@@ -160,7 +160,8 @@ def snap_angle(ic):
         r = math.radians(-a)
         x0, y0 = ox + 34 * math.cos(r), oy + 34 * math.sin(r)
         x1, y1 = ox + 40 * math.cos(r), oy + 40 * math.sin(r)
-        ic.add(f'<path d="M{x0:.1f},{y0:.1f}L{x1:.1f},{y1:.1f}" stroke="{INK}" stroke-width="1.8"/>')
+        ic.add(f'<path d="M{x0:.1f},{y0:.1f}L{x1:.1f},{y1:.1f}" stroke="#fff" stroke-width="4"/>'      # white edge: shows on dark
+               f'<path d="M{x0:.1f},{y0:.1f}L{x1:.1f},{y1:.1f}" stroke="{INK}" stroke-width="1.8"/>')
     ic.add(f'<path d="M{ox + 22},{oy}A22,22 0 0,0 {ox + 22 * math.cos(math.radians(-45)):.1f},{oy + 22 * math.sin(math.radians(-45)):.1f}" '
            f'fill="none" stroke="#e0281a" stroke-width="2.6"/>')
     for a in (0, -45):

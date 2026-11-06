@@ -649,6 +649,8 @@ def main():
     apps2.write(OUT)
     import qbittorrent
     qbittorrent.write(OUT)
+    import darkedge
+    darkedge.write(OUT)
     broken = [os.path.join(dp, f) for dp, dn, fn in os.walk(OUT) for f in fn
               if os.path.islink(os.path.join(dp, f)) and not os.path.exists(os.path.join(dp, f))]
     if broken:

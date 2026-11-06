@@ -34,6 +34,9 @@
 - Printer: `devices.printer` (final). Network and globe: `gen.network`, `gen.plain_globe`. Dolphin's small view
   modes: `dolphin.small_view`. Konsole: `uitrace.terminal_monitor`, `uitrace.utilities_terminal`.
 
+- Dark-theme white edges: `darkedge.py` (`HALO`) runs last and adds a white edge under the listed drawings. Add a
+  name there if a mostly-black icon disappears on dark backgrounds.
+
 ## Changing an icon
 
 1. Keep a copy of the current theme: `cp -a KDE-Modern-Classic /tmp/before`.
