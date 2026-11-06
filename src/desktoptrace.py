@@ -96,12 +96,17 @@ def _bars(ic, x0):
 
 
 def list_ordered(ic):
-    _bars(ic, 22)
+    """Numbered list: silver lines and silver numbers with a thin dark edge, readable on dark themes too (until
+    2026-11-06 the lines were grey and the numbers black)."""
+    silver = [(0, "#ffffff"), (.5, "#c3c7cd"), (1, "#7b818a")]
+    for k in range(3):
+        ic.path(rrect(22, 12 + k * 18, 38, 7, 1.5), ic.lg(silver), INK, .9)
     digits = ["M6,10L10,7V20", "M5,29Q6,25 9.5,25Q13,25 13,28.6Q13,31 5,38H13.6", "M5,44H13L8.6,49Q13.6,49 13.6,53Q13.6,57 9,57Q6,57 5,55"]
     for d in digits:
-        ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+        ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>'
+               f'<path d="{d}" fill="none" stroke="#c3c7cd" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
     for y in (19.5, 37.5, 55.5):
-        ic.path(circle(17, y, 1.6), INK, None)
+        ic.path(circle(17, y, 1.6), "#c3c7cd", INK, .8)
 
 
 def list_unordered(ic):

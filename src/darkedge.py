@@ -9,9 +9,8 @@ import re
 HALO = [
     "format-text-bold", "format-text-italic", "format-text-underline", "format-text-underline-squiggle",
     "format-text-strikethrough", "format-text-subscript", "format-text-superscript", "format-text-color",
-    "format-justify-left", "format-justify-center", "format-justify-right", "format-justify-fill",
-    "format-indent-more", "format-indent-less", "format-text-direction-ltr", "format-text-direction-rtl",
-    "draw-text", "format-list-ordered", "percent", "edit-line-width", "code-block", "code-context",
+    "format-text-direction-ltr", "format-text-direction-rtl",
+    "draw-text", "percent", "edit-line-width", "code-block", "code-context",
     "view-sort", "view-sort-descending", "sort-name", "handle-sort", "help-whatsthis",
 ]
 

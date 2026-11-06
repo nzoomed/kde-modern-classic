@@ -8,8 +8,10 @@
   so they show up on dark colour schemes and black terminal backgrounds.
 - **White edges for dark themes** on icons drawn mostly in black, so they no longer disappear on dark colour
   schemes: text formatting (bold, italic, underline, strikethrough, subscript, superscript, text colour, text
-  direction), text alignment, indent, numbered list, draw text, percent, line width, the code block icons, the
-  sort icons and What's This. Snap to Angle's tick marks get the same edge. On light themes they look as before.
+  direction), draw text, percent, line width, the code block icons, the sort icons and What's This. Snap to
+  Angle's tick marks get the same edge. On light themes they look as before.
+- **Text alignment, indent and numbered list**: the lines of text (and the list's numbers) are now silver with a
+  thin dark edge instead of black, so they read on dark colour schemes too.
 - **Cut**: the scissors now have red handles instead of black, so they show on dark backgrounds.
 
 ## KDE Modern Classic – 2026-11-06

@@ -296,9 +296,14 @@ def shuffle(ic):
 
 
 # ------------------------------------------------------------------ text formatting
+SILVER = [(0, "#ffffff"), (.5, "#c3c7cd"), (1, "#7b818a")]
+
+
 def _textlines(ic, rows):
+    """Lines of text for the alignment and indent icons: silver bars with a thin dark edge, which read on light and
+    dark backgrounds alike (until 2026-11-06 they were plain black and vanished on dark themes)."""
     for y, x0, x1 in rows:
-        ic.path(f"M{x0},{y}H{x1}V{y + 4.6}H{x0}Z", ic.lg([(0, "#4c5158"), (1, "#000000")]), None)
+        ic.path(f"M{x0},{y}H{x1}V{y + 4.6}H{x0}Z", ic.lg(SILVER), INK, .9)
 
 
 def justify(ic, mode):
