@@ -346,20 +346,20 @@ def emblem_readonly(ic):
 
 
 def format_text_bold(ic):
-    """Bold: a heavy black serif B."""
+    """Bold: a heavy serif B in mid grey, which reads on light and dark themes (black until 2026-11-06)."""
     outer = ("M8,7H34C47,7 53,12.5 53,20.5C53,26.5 49,30 43,31.6C51,33 56,38 56,45.2C56,52.6 49.6,57 37.6,57H8V52.6H14V11.4H8Z")
     holes = ("M26,11.4V29.6H32.4C38.4,29.6 40.8,26 40.8,20.6C40.8,14.6 37.6,11.4 32,11.4Z"
              "M26,33.8V52.6H34C40.4,52.6 43.4,49 43.4,43.4C43.4,37.4 40,33.8 33.4,33.8Z")
-    ic.shadow(outer, 2.4, 2)
-    ic.add(f'<path d="{outer}{holes}" fill="{ic.lg([(0, "#6c727a"), (.35, "#1e2024"), (1, "#000000")], 0, 0, .4, 1)}" fill-rule="evenodd" stroke="{INK}" stroke-width="1"/>')
+    ic.shadow(outer + holes, 2.4, 2, evenodd=True)
+    ic.add(f'<path d="{outer}{holes}" fill="{ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")], 0, 0, .4, 1)}" fill-rule="evenodd" stroke="{INK}" stroke-width="1"/>')
     ic.add('<path d="M17,13V50" stroke="#fff" stroke-opacity=".35" stroke-width="1.4"/>')
 
 
 def format_text_superscript(ic):
-    """Superscript: a black x with a small raised 2."""
+    """Superscript: a mid-grey x with a small raised blue 2."""
     x = "M6,26H20V29.5H17.5L24,38.5L30.5,29.5H28V26H40V29.5H36L27,42L37,55H40V58.6H26V55H28.4L22,46L15.4,55H18V58.6H5V55H9L19,42L10,29.5H6Z"
     ic.shadow(x, 2.2, 1.8)
-    ic.path(x, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8)
+    ic.path(x, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8)
     two = "M44,14Q44,6 51,6Q58,6 58,12.4Q58,17.6 49.6,23H58.6V27H43.4V24Q54,16.4 54,12.6Q54,9.6 51,9.6Q48,9.6 48,14Z"
     ic.shadow(two, 1.8, 1.5)
     ic.path(two, ic.lg([(0, "#3a6ad8"), (1, "#0a1a80")]), INK, .8)

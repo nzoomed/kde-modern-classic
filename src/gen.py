@@ -56,10 +56,12 @@ class Icon:
         st = f' stroke="{stroke}" stroke-width="{w}" stroke-linejoin="round"' if stroke else ""
         self.add(f'<path d="{d}" fill="{fill}"{st}{extra}/>')
 
-    def shadow(self, d, dx=3.2, dy=2.6, steps=3, a=.16, transform=""):
-        """Soft-ish cast shadow to the lower right from stacked offset copies."""
+    def shadow(self, d, dx=3.2, dy=2.6, steps=3, a=.16, transform="", evenodd=False):
+        """Soft-ish cast shadow to the lower right from stacked offset copies. evenodd=True keeps holes in the shape
+        (the counters of a letter) clear."""
         tf = f' transform="{transform}"' if transform else ""
-        g = "".join(f'<path d="{d}" fill="#000" fill-opacity="{a:.3f}" transform="translate({dx * (k + 1) / steps:.2f},{dy * (k + 1) / steps:.2f})"/>'
+        rule = ' fill-rule="evenodd"' if evenodd else ""
+        g = "".join(f'<path d="{d}" fill="#000" fill-opacity="{a:.3f}"{rule} transform="translate({dx * (k + 1) / steps:.2f},{dy * (k + 1) / steps:.2f})"/>'
                     for k in range(steps))
         self.add(f"<g{tf}>{g}</g>")
 

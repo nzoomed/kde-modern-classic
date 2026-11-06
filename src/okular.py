@@ -132,8 +132,8 @@ def _colour_bar(ic, col="#e0281a"):
 def format_text_color(ic):
     """Text colour: a bold letter A over a red colour bar."""
     d = "M8,46L26,4H38L56,46H45L41,36H23L19,46ZM26,27H38L32,12Z"
-    ic.shadow(d, 2.2, 1.8)
-    ic.path(d, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8, ' fill-rule="evenodd"')
+    ic.shadow(d, 2.2, 1.8, evenodd=True)
+    ic.path(d, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8, ' fill-rule="evenodd"')      # mid grey: reads on light and dark themes
     _colour_bar(ic)
 
 

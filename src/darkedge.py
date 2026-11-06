@@ -7,8 +7,7 @@ import os
 import re
 
 HALO = [
-    "format-text-bold", "format-text-italic", "format-text-underline", "format-text-underline-squiggle",
-    "format-text-strikethrough", "format-text-subscript", "format-text-superscript", "format-text-color",
+    "format-text-underline-squiggle", "format-text-strikethrough", "format-text-subscript",
     "format-text-direction-ltr", "format-text-direction-rtl",
     "draw-text", "percent", "edit-line-width", "code-block", "code-context",
     "view-sort", "view-sort-descending", "sort-name", "handle-sort", "help-whatsthis",

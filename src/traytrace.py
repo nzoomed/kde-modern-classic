@@ -334,14 +334,14 @@ def indent(ic, more):
 def italic(ic):
     d = "M24,6H48V10H42L30,54H36V58H12V54H18L30,10H24Z"
     ic.shadow(d, 2.2, 1.8)
-    ic.path(d, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8)
+    ic.path(d, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8)                 # mid grey: reads on light and dark themes
 
 
 def underline(ic):
     d = ("M8,4H26V8H22V34Q22,44 32,44Q42,44 42,34V8H38V4H56V8H50V34Q50,51 32,51Q14,51 14,34V8H8Z")
     ic.shadow(d, 2.2, 1.8)
-    ic.path(d, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8)
-    ic.path("M6,55H58V60H6Z", "#000000", None)
+    ic.path(d, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8)                 # mid grey: reads on light and dark themes
+    ic.path("M6,55H58V60H6Z", "#8a9098", INK, .8)
 
 
 def strikethrough(ic):
