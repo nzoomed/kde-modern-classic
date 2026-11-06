@@ -68,12 +68,13 @@ def align_vcenter(ic):
 
 
 # ------------------------------------------------------------------ text and lists
-def _letter_a(ic, x, y, h, col="#14171c"):
-    """A letter A in black with a white edge, so it shows on dark backgrounds too (white edge added 2026-11-06)."""
+def _letter_a(ic, x, y, h, col="#8a9098"):
+    """A letter A in mid grey with the dark outline, like the other text icons, so it shows on dark themes too
+    (black until 2026-11-06)."""
     w = h * .8
     d = f"M{x},{y + h}L{x + w / 2},{y}L{x + w},{y + h}M{x + w * .22},{y + h * .62}H{x + w * .78}"
     sw = h * .17
-    ic.add(f'<path d="{d}" fill="none" stroke="#fff" stroke-width="{sw + 2.6:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
+    ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="{sw + 2:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
     ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{sw:.2f}" stroke-linejoin="miter" stroke-linecap="square"/>')
 
 
