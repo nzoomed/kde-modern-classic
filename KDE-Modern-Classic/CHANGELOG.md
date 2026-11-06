@@ -8,7 +8,7 @@
   so they show up on dark colour schemes and black terminal backgrounds.
 - **Dark-theme fixes** for icons drawn mostly in black, which disappeared on dark colour schemes: the sort icons'
   arrows are now light grey with a dark edge; Percent, Line Width, the code block braces, the sort handle and the
-  What's This pointer are mid grey; Snap to Angle's tick marks have a white edge. On light themes they look much
+  What's This pointer are mid grey; the 1 in Repeat One is silver; Snap to Angle's tick marks have a white edge. On light themes they look much
   as before.
 - **Text formatting** (Bold, Italic, Underline, Wavy Underline, Strikethrough, Subscript, Superscript, Text Colour,
   Text Direction and Draw Text): the letters are now mid grey instead of black, so they read on dark colour

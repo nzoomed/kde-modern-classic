@@ -285,7 +285,9 @@ def repeat(ic):
 
 def repeat_one(ic):
     _loop(ic)
-    ic.add(f'<path d="M28,28L33,24V42M28,42H38" fill="none" stroke="{INK}" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>')
+    one = "M28,28L33,24V42M28,42H38"       # a silver 1 with a dark edge, like the numbered list: shows on dark themes
+    ic.add(f'<path d="{one}" fill="none" stroke="{INK}" stroke-width="5.2" stroke-linecap="square" stroke-linejoin="miter"/>'
+           f'<path d="{one}" fill="none" stroke="#d8dbdf" stroke-width="2.8" stroke-linecap="square" stroke-linejoin="miter"/>')
 
 
 def shuffle(ic):
