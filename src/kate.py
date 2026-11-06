@@ -139,8 +139,10 @@ def debug_run(ic):
 def debug_run_cursor(ic):
     """Run to cursor: a green play button running up to the text cursor."""
     _play(ic, 4, 14, 30)
-    ic.add(f'<path d="M48,8H58M53,8V56M48,56H58" fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="square"/>'
-           '<path d="M48,8H58M53,8V56M48,56H58" fill="none" stroke="#3c4148" stroke-width="2.6"/>')
+    # the text cursor: light grey with a dark edge, a little bolder, so it shows on dark themes (dark grey before
+    # 2026-11-07)
+    ic.add(f'<path d="M47,8H59M53,8V56M47,56H59" fill="none" stroke="{INK}" stroke-width="6.2" stroke-linecap="square"/>'
+           '<path d="M47,8H59M53,8V56M47,56H59" fill="none" stroke="#a8adb4" stroke-width="3.4" stroke-linecap="square"/>')
 
 
 def _stmt(ic, y, hi=False):
