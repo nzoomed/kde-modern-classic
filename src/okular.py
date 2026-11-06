@@ -150,7 +150,7 @@ def underline_squiggle(ic):
 def edit_line_width(ic):
     """Line width: three strokes, thin to thick."""
     for y, h in ((10, 2), (24, 5), (42, 10)):
-        ic.path(f"M6,{y}H58V{y + h}H6Z", ic.lg([(0, "#5c6168"), (1, "#000000")], 0, 0, 0, 1), INK, .8)
+        ic.path(f"M6,{y}H58V{y + h}H6Z", ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")], 0, 0, 0, 1), INK, .8)     # mid grey: reads on dark themes
 
 
 def snap_angle(ic):

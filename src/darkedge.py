@@ -6,10 +6,7 @@ the background, so they look as before. Chosen icon by icon with the author; see
 import os
 import re
 
-HALO = [
-    "percent", "edit-line-width", "code-block", "code-context",
-    "view-sort", "view-sort-descending", "sort-name", "handle-sort", "help-whatsthis",
-]
+HALO = []       # emptied 2026-11-06: those icons were recoloured in their own modules instead
 
 SHAPES = r"<(path|circle|rect|ellipse|polygon|polyline|line|use)\b([^>]*?)(/?)>"
 

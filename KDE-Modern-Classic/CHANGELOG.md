@@ -6,9 +6,10 @@
 
 - **Increase and Decrease Font Size** (Konsole, Kate and other editors): the black letters now have a white edge,
   so they show up on dark colour schemes and black terminal backgrounds.
-- **White edges for dark themes** on icons drawn mostly in black, so they no longer disappear on dark colour
-  schemes: percent, line width, the code block icons, the sort icons and What's This. Snap to Angle's tick marks
-  get the same edge. On light themes they look as before.
+- **Dark-theme fixes** for icons drawn mostly in black, which disappeared on dark colour schemes: the sort icons'
+  arrows are now light grey with a dark edge; Percent, Line Width, the code block braces, the sort handle and the
+  What's This pointer are mid grey; Snap to Angle's tick marks have a white edge. On light themes they look much
+  as before.
 - **Text formatting** (Bold, Italic, Underline, Wavy Underline, Strikethrough, Subscript, Superscript, Text Colour,
   Text Direction and Draw Text): the letters are now mid grey instead of black, so they read on dark colour
   schemes too. The bold B's counters (and the A's in Text Colour) are clear again; before, the

@@ -842,7 +842,8 @@ def sort_name(ic):
     for d, col in (("M6,30L14,8L22,30M9.4,22H18.6", "#2a3ae8"), ("M42,8H58L42,30H58", "#e0281a")):
         ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>')
         ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
-    ic.add(f'<path d="M8,48H54M46,40L56,48L46,56" fill="none" stroke="{INK}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>')
+    ic.add(f'<path d="M8,48H54M46,40L56,48L46,56" fill="none" stroke="{INK}" stroke-width="6.2" stroke-linecap="round" stroke-linejoin="round"/>'
+           f'<path d="M8,48H54M46,40L56,48L46,56" fill="none" stroke="#a8adb4" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>')   # grey arrow, dark edge: shows on dark themes
 
 
 def text_unflow(ic):

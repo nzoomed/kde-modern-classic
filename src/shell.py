@@ -384,7 +384,8 @@ def _table(ic, x=4, y=8, w=56, h=46, cols=(22, 40)):
 def sort_handle(ic):
     """Sort: a drag handle with arrows up and down."""
     for y in (26, 32, 38):
-        ic.add(f'<path d="M8,{y}H36" stroke="#5c6168" stroke-width="3" stroke-linecap="round"/>')
+        ic.add(f'<path d="M8,{y}H36" stroke="{INK}" stroke-width="4.6" stroke-linecap="round"/>'
+               f'<path d="M8,{y}H36" stroke="#a8adb4" stroke-width="2.4" stroke-linecap="round"/>')
     _arrow(ic, "M50,6V58M42,14L50,6L58,14M42,50L50,58L58,50", "#2a6ac8", 3.4)
 
 

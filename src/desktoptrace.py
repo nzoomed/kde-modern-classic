@@ -136,11 +136,12 @@ def text_frame(ic):
 
 
 def percent(ic):
+    """Percent sign, mid grey so it reads on light and dark themes."""
     d = ("M18,6A10,12 0 1 0 18.01,6ZM18,12A4,6 0 1 1 17.99,12Z"
          "M46,34A10,12 0 1 0 46.01,34ZM46,40A4,6 0 1 1 45.99,40Z"
          "M44,4H51L20,60H13Z")
-    ic.shadow(d, 2.2, 1.8)
-    ic.add(f'<path d="{d}" fill="{ic.lg([(0, "#4c5158"), (1, "#000000")])}" fill-rule="evenodd" stroke="{INK}" stroke-width=".8"/>')
+    ic.shadow(d, 2.2, 1.8, evenodd=True)
+    ic.add(f'<path d="{d}" fill="{ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")])}" fill-rule="evenodd" stroke="{INK}" stroke-width=".8"/>')
 
 
 def sort_descending(ic):
@@ -148,7 +149,8 @@ def sort_descending(ic):
     for d, col in (("M10,10H26L10,30H26", "#e0281a"), ("M10,54L18,34L26,54M13.2,46.4H22.8", "#2a3ae8")):
         ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>')
         ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
-    ic.add(f'<path d="M44,56V12M36,20L44,10L52,20" fill="none" stroke="{INK}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>')
+    ic.add(f'<path d="M44,56V12M36,20L44,10L52,20" fill="none" stroke="{INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'
+           f'<path d="M44,56V12M36,20L44,10L52,20" fill="none" stroke="#a8adb4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>')   # grey arrow, dark edge: shows on dark themes
 
 
 # ------------------------------------------------------------------ shapes and layers
@@ -308,7 +310,7 @@ def whats_this(ic):
     ic.add("</g>")
     p = "M6,6V48L16,38L24,56L31,53L23,35H37Z"
     ic.shadow(p, 2.2, 1.8)
-    _mpath(ic, p, ic.lg([(0, "#4c5158"), (1, "#000000")], 0, 0, 1, 1), 1.6)
+    _mpath(ic, p, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")], 0, 0, 1, 1), 1.6)          # mid grey pointer: reads on dark themes
     ic.add('<path d="M9,12V40" stroke="#fff" stroke-opacity=".5" stroke-width="1.2"/>')
 
 

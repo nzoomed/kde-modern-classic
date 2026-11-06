@@ -34,8 +34,9 @@
 - Printer: `devices.printer` (final). Network and globe: `gen.network`, `gen.plain_globe`. Dolphin's small view
   modes: `dolphin.small_view`. Konsole: `uitrace.terminal_monitor`, `uitrace.utilities_terminal`.
 
-- Dark-theme white edges: `darkedge.py` (`HALO`) runs last and adds a white edge under the listed drawings. Add a
-  name there if a mostly-black icon disappears on dark backgrounds.
+- Dark themes: icons drawn mostly in black vanish on dark colour schemes. The fix used so far is to draw them in
+  mid grey (`#c3c7cd` → `#8a9098` → `#4c5158`) or silver with the usual dark outline. `darkedge.py` (`HALO`, empty
+  now) can add a white edge under listed drawings, but on letters and thin lines it was judged too heavy.
 
 ## Changing an icon
 

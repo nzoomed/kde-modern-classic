@@ -342,7 +342,8 @@ def view_sort(ic):
     for d, col in (("M10,28L18,8L26,28M13.2,20.4H22.8", "#2a3ae8"), ("M10,34H26L10,54H26", "#e0281a")):
         ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>')
         ic.add(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
-    ic.add(f'<path d="M44,8V52M36,44L44,54L52,44" fill="none" stroke="{INK}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>')
+    ic.add(f'<path d="M44,8V52M36,44L44,54L52,44" fill="none" stroke="{INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'
+           f'<path d="M44,8V52M36,44L44,54L52,44" fill="none" stroke="#a8adb4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>')   # grey arrow, dark edge: shows on dark themes
 
 
 def view_group(ic):

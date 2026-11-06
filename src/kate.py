@@ -53,14 +53,14 @@ def _braces(ic, x0=4, x1=60, y0=6, y1=58):
         d = (f"M{x + s * 12},{y0}Q{x + s * 5},{y0} {x + s * 5},{y0 + 8}V{m - 6}Q{x + s * 5},{m} {x},{m}"
              f"Q{x + s * 5},{m} {x + s * 5},{m + 6}V{y1 - 8}Q{x + s * 5},{y1} {x + s * 12},{y1}")
         ic.add(f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>'
-               f'<path d="{d}" fill="none" stroke="#3c4148" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>')
+               f'<path d="{d}" fill="none" stroke="#8a9098" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>')
 
 
 def code_block(ic):
     """Block: a pair of curly braces round a few lines of code."""
     _braces(ic)
     for k, (x, w) in enumerate(((20, 22), (24, 18), (24, 12), (20, 20))):
-        ic.add(f'<path d="M{x},{18 + k * 9}H{x + w}" stroke="#3c4148" stroke-width="2.4" stroke-dasharray="4 1.6"/>')
+        ic.add(f'<path d="M{x},{18 + k * 9}H{x + w}" stroke="#8a9098" stroke-width="2.4" stroke-dasharray="4 1.6"/>')
 
 
 def code_context(ic):
