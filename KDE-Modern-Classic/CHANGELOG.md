@@ -10,6 +10,7 @@
   schemes: text formatting (bold, italic, underline, strikethrough, subscript, superscript, text colour, text
   direction), text alignment, indent, numbered list, draw text, percent, line width, the code block icons, the
   sort icons and What's This. Snap to Angle's tick marks get the same edge. On light themes they look as before.
+- **Cut**: the scissors now have red handles instead of black, so they show on dark backgrounds.
 
 ## KDE Modern Classic – 2026-11-06
 

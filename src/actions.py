@@ -210,14 +210,17 @@ def cut(ic):
 
 
 def _cut_shape(ic):
-    """Open black-handled scissors, blades crossing (drawn blades-left, mirrored by cut())."""
+    """Open red-handled scissors, blades crossing (drawn blades-left, mirrored by cut()). The handles were black
+    until 2026-11-06; red shows on dark backgrounds too."""
     for sgn in (1, -1):
         blade = f"M30,{32 + sgn * 2}L6,{32 - sgn * 22}L10,{32 - sgn * 24}L36,{32 - sgn * 1}Z"
         ic.path(blade, ic.lg([(0, "#ffffff"), (.5, "#c3c7cd"), (1, "#5c6168")]), INK, 1.2)
     for sgn in (1, -1):
         cx, cy = 48, 32 + sgn * 13
-        ic.add(f'<path d="M36,{32 + sgn * 2}L{cx - 5},{cy - sgn * 2}" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>')
-        ic.path(circle(cx, cy, 10) + circle(cx, cy, 6), ic.lg([(0, "#5c6168"), (1, "#0a0c10")]), INK, 1.2, ' fill-rule="evenodd"')
+        ic.add(f'<path d="M36,{32 + sgn * 2}L{cx - 5},{cy - sgn * 2}" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
+               f'<path d="M36,{32 + sgn * 2}L{cx - 5},{cy - sgn * 2}" stroke="#c01810" stroke-width="2.6" stroke-linecap="round"/>')
+        ic.path(circle(cx, cy, 10) + circle(cx, cy, 6), ic.lg([(0, "#ff9a8a"), (.45, "#d8201a"), (1, "#5a0604")], 0, 0, 1, 1),
+                INK, 1.2, ' fill-rule="evenodd"')
     ic.path(circle(32, 32, 2.6), ic.rg([(0, "#ffffff"), (1, "#8a9098")]), INK, 1)
 
 
