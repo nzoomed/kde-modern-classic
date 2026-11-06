@@ -62,7 +62,7 @@ with no extra packages:
     make check-build    # confirms the committed theme is exactly what src/ draws
     make dist           # KDE-Modern-Classic-YYYYMMDD.tar.gz for the store
 
-##Community & Human Contributions Welcome!
+## Community & Human Contributions Welcome!
 
 This project is open-source and hosted on GitHub. While AI helped build the massive foundation of over 3,182 icons, human refinement is the ultimate goal.
 If you love the classic KDE aesthetic and want to help perfect this theme, contributions are highly encouraged! You can help by:
