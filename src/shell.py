@@ -347,10 +347,10 @@ def blur(ic):
 
 
 def draw_text(ic):
-    """Text: a bold serif capital T."""
+    """Text: a bold serif capital T, mid grey so it reads on light and dark themes."""
     d = "M8,6H56V20H50L48,14H38V50L44,52V58H20V52L26,50V14H16L14,20H8Z"
     ic.shadow(d, 2.4, 2)
-    ic.path(d, ic.lg([(0, "#5c6168"), (1, "#0a0c10")], 0, 0, 1, 1), INK, 1.2)
+    ic.path(d, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")], 0, 0, 1, 1), INK, 1.2)
 
 
 def draw_number(ic):

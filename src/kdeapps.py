@@ -136,7 +136,7 @@ def format_stroke_color(ic):
 def _pilcrow(ic, x):
     p = (f"M{x + 10},4H{x + 30}V9H{x + 26}V40H{x + 21}V9H{x + 17}V40H{x + 12}V24Q{x},24 {x},14Q{x},4 {x + 10},4Z")
     ic.shadow(p, 2, 1.7)
-    ic.path(p, ic.lg([(0, "#5c6168"), (1, "#141414")], 0, 0, 1, 1), INK, 1)
+    ic.path(p, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")], 0, 0, 1, 1), INK, 1)      # mid grey: reads on light and dark themes
 
 
 def format_text_direction_ltr(ic):

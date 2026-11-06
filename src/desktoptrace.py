@@ -116,10 +116,10 @@ def list_unordered(ic):
 
 
 def subscript(ic):
-    """Subscript: a black x with a small lowered 2."""
+    """Subscript: a mid-grey x with a small lowered blue 2."""
     x = "M6,6H20V9.5H17.5L24,18.5L30.5,9.5H28V6H40V9.5H36L27,22L37,35H40V38.6H26V35H28.4L22,26L15.4,35H18V38.6H5V35H9L19,22L10,9.5H6Z"
     ic.shadow(x, 2.2, 1.8)
-    ic.path(x, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8)
+    ic.path(x, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8)
     two = "M44,44Q44,36 51,36Q58,36 58,42.4Q58,47.6 49.6,53H58.6V57H43.4V54Q54,46.4 54,42.6Q54,39.6 51,39.6Q48,39.6 48,44Z"
     ic.shadow(two, 1.8, 1.5)
     ic.path(two, ic.lg([(0, "#3a6ad8"), (1, "#0a1a80")]), INK, .8)

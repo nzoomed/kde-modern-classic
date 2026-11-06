@@ -347,7 +347,7 @@ def underline(ic):
 def strikethrough(ic):
     s = "M46,14Q42,8 32,8Q20,8 20,18Q20,26 32,29Q44,32 44,42Q44,54 30,54Q20,54 16,46"
     ic.add(f'<path d="{s}" fill="none" stroke="{INK}" stroke-width="7.4" stroke-linecap="square"/>')
-    ic.add(f'<path d="{s}" fill="none" stroke="#2c3036" stroke-width="5"/>')
+    ic.add(f'<path d="{s}" fill="none" stroke="#8a9098" stroke-width="5"/>')             # mid grey: reads on dark themes too
     ic.path("M4,30H60V35H4Z", ic.lg([(0, "#ff8a7a"), (1, "#a8180a")]), INK, 1)
 
 

@@ -141,7 +141,7 @@ def underline_squiggle(ic):
     """Squiggly underline: the underline letter U with a wavy red line beneath."""
     d = "M8,4H26V8H22V30Q22,40 32,40Q42,40 42,30V8H38V4H56V8H50V30Q50,47 32,47Q14,47 14,30V8H8Z"
     ic.shadow(d, 2.2, 1.8)
-    ic.path(d, ic.lg([(0, "#4c5158"), (1, "#000000")]), INK, .8)
+    ic.path(d, ic.lg([(0, "#c3c7cd"), (.5, "#8a9098"), (1, "#4c5158")]), INK, .8)                 # mid grey: reads on light and dark themes
     w = "M4,56" + "".join(f"Q{7 + 8 * k},{50 if k % 2 == 0 else 62} {11 + 8 * k},56" for k in range(7))
     ic.add(f'<path d="{w}" fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
            f'<path d="{w}" fill="none" stroke="#e0281a" stroke-width="3" stroke-linecap="round"/>')
