@@ -19,7 +19,10 @@ ask for the same name. Because of that, these all look identical whatever theme 
 - **Games:** Action, Emulators, Puzzles, Role Playing, Sports, Launchers and Tools all fall back to
   `applications-games`; Simulation shares `applications-games-strategy` with Strategy.
 - **Science:** Biology and Geology have no icon.
-- **Development (as shipped by Debian):** IDEs and Profiling have no icon.
+- **Development:** IDEs, Profiling and Web Development have no icon.
+
+(Checked against `libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml` on Discover's master
+branch, 2026-11-09.)
 
 **Suggestion:** give each subcategory its own name that falls back to its parent through the normal
 dash rule, for example:
@@ -29,6 +32,7 @@ applications-games-action        applications-games-emulators    applications-ga
 applications-games-roleplaying   applications-games-sports       applications-games-simulation
 applications-science-biology     applications-science-geology
 applications-development-ide     applications-development-profiling
+applications-development-web
 ```
 
 Because of dash fallback, `applications-games-action` resolves to `applications-games` in any theme that
