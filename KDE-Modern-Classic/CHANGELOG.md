@@ -1,6 +1,6 @@
 # Changelog
 
-## KDE Modern Classic – unreleased
+## KDE Modern Classic – 2026-11-09
 
 ### Fixes
 
